@@ -46,3 +46,29 @@ console.log(firstFruit);
 //'Tamaño de un array'
 const numberOfFruits = fruits.length;
 console.log(numberOfFruits);
+
+//MUTABILITY
+
+//'Como agregar un elemento a un array'
+fruits.push("watermelon");
+console.log(fruits);
+
+//INMUTABILITY
+
+//'Juntar 2 arrays'
+const newFruits = fruits.concat(["grape", "kiwi"]);
+console.log(fruits);
+console.log(newFruits);
+
+//'Revisar que un array es un array con Array.isArray()'
+const isArray = Array.isArray(fruits);
+console.log(isArray);
+
+//'Ejercicio practico:Suma de todos los elementos de un array'
+const numbersArray = [1, 2, 3, 4, 5];
+let sum = 0;
+
+for (let i of numbersArray) {
+	sum = sum + i;
+}
+console.log(sum);
