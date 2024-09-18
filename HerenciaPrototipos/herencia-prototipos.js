@@ -1,3 +1,5 @@
+//HERENCIA EN LA PRACTICA
+
 //'Crear clase constructor'
 class Animal {
 	constructor(nombre, tipo) {
@@ -32,6 +34,31 @@ console.log(perro1);
 perro1.correr();
 perro1.emitirSonido();
 
-//'Poder ver los prototipos'
-Animal.prototype;
-Perro.prototype;
+//PROTOTIPOS EN LA PRACTICA
+
+//'Agregar metodo a instancia'
+perro1.nuevoMetodo = function () {
+	console.log("Este es un metodo");
+};
+
+console.log(perro1);
+perro1.nuevoMetodo();
+
+//'Injectando metodo al prototipo de la clase padre'
+Perro.prototype.segundoMetodo = function () {
+	console.log("Es otro nuevo metodo");
+};
+
+perro1.segundoMetodo();
+console.log(perro1);
+
+//'Ejemplo para poder ver la cadena de prototipao'
+let currentPrototype = Object.getPrototypeOf(perro1);
+
+for (
+	;
+	currentPrototype !== null;
+	currentPrototype = Object.getPrototypeOf(currentPrototype)
+) {
+	console.log(currentPrototype);
+}
