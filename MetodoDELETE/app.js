@@ -3,7 +3,7 @@ const listElement = document.querySelector(".posts");
 const postTempalte = document.getElementById("single-post");
 const form = document.querySelector("#new-post form");
 const fetchButton = document.querySelector("#available-posts button");
-const postList = document.querySelector("#post-container");
+const postList = document.querySelector("#posts-container");
 
 //funcion de peticiones
 function sendHTTPRequest(method, url, data) {
@@ -74,4 +74,20 @@ form.addEventListener("submit", (event) => {
 
 	console.log(title, content);
 	createPost(title, content);
+});
+
+//'Añadiendo el evento al padre de las tarjetas'
+postList.addEventListener("click", (event) => {
+	console.log(event);
+	//Genero una validacion
+	if (event.target.tagName === "BUTTON") {
+		//obtengo el elemento mas cercano que contenga el ID
+		const postId = event.target.closest("article").id;
+		console.log(postId);
+		//mandando solicitud de eliminado
+		sendHTTPRequest(
+			"DELETE",
+			`https://jsonplaceholder.typicode.com/posts/${postId}`
+		);
+	}
 });
